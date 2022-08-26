@@ -27,15 +27,24 @@ window.onresize = setSizes;
 function toggleMenu() {
   // Captures constants for the menu tab title
   // and the menu underneath.
-  const menuTab = document.querySelector('#menu_tab');
-  const myMenu = document.querySelector('menu');
 
-  // We add a pointer down event to toggle
-  // a visible class that will show / hide
-  // the menu
-  menuTab.addEventListener('pointerdown', (event) => {
-    myMenu.classList.toggle('visible');
+  // const myButton = document.getElementById('hideButton');
+  // const menuTab = document.querySelector('#menu_tab');
+  // const myMenu = document.querySelector('form#menuForm');
+
+  const button = document.querySelector('button');
+  const form = document.querySelector('#settings-wrap');
+
+  button.addEventListener('click', (event) => {
+    form.classList.toggle('visible');
   });
+
+  // // We add a pointer down event to toggle
+  // // a visible class that will show / hide
+  // // the menu
+  // menuTab.addEventListener('pointerdown', (event) => {
+  //   myMenu.classList.toggle('visible');
+  // });
 }
 
 toggleMenu();

@@ -10,49 +10,79 @@
 </head>
 
 <body>
-  <div id="menu_tab">Menu</div>
-  <div id="menu_wrap">
-    <menu>
-      <ul class="sizes">
-        <li class="desc">Size</li>
-        <li class="size1">bed</li>
-        <li class="size2">knee</li>
-        <li class="size3">breakfast</li>
-      </ul>
 
-      <ul class="text_type">
-        <li class="desc">Justification</li>
-        <li class="rag">Ragged</li>
-        <li class="just">Justified</li>
-      </ul>
+  <div id="menu-wrap">
+    <p>Settings</p>
+    <button id="hideSettings">Hide Settings</button>
+    <div id="settings-wrap">
+      <form action="" id="menuForm">
+        <fieldset>
+          <legend>Font size</legend>
 
-      <ul class="family">
-        <li class="desc">Family</li>
-        <li class="geo">Georgia</li>
-        <li class="hel">Helvetica</li>
-      </ul>
+          <input type="radio" name="text-size" id="small">
+          <label for="small">Small</label><br />
 
-      <ul class="contrast">
-        <li class="desc">Contrast</li>
-        <li class="lowc">Low</li>
-        <li class="highc">High</li>
-      </ul>
+          <input type="radio" name="text-size" id="medium">
+          <label for="medium">Medium</label><br />
 
-      <ul class="grid">
-        <li class="desc">Grid</li>
-        <li class="bg_off">Grid Off</li>
-        <li class="bg_on">Grid On</li>
-      </ul>
+          <input type="radio" name="text-size" id="large">
+          <label for="large">Large</label><br />
+        </fieldset>
 
-      <ul class="hyphenation">
-        <li class="desc">Hyphenation</li>
-        <li id="hyphenToggle">Toggle</li>
-      </ul>
-    </menu>
+        <fieldset>
+          <legend>Font Family</legend>
+
+          <input type="radio" name="font-family" id="georgia">
+          <label for="georgia">Georgia</label><br />
+
+          <input type="radio" name="font-family" id="roboto">
+          <label for="roboto">Roboto</label><br />
+
+          <input type="radio" name="font-family" id="courier">
+          <label for="Courier">Courier</label><br />
+
+          <input type="radio" name="font-family" id="raleway">
+          <label for="raleway">Raleway</label><br />
+
+          <input type="radio" name="font-family" id="recursive">
+          <label for="recursive">Recursive</label><br />
+
+          <input type="radio" name="font-family" id="roslindale">
+          <label for="roslindale">Roslindale</label><br />
+        </fieldset>
+
+        <fieldset>
+          <legend>Line Height</legend>
+
+          <input type="radio" name="line-height" id="lh-tight">
+          <label for="lh-tight">Tight</label><br />
+
+          <input type="radio" name="line-height" id="lh-medium">
+          <label for="lh-medium">Medium</label><br />
+
+          <input type="radio" name="line-height" id="lh-loose">
+          <label for="lh-loose">Loose</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Justify</legend>
+
+          <input type="checkbox" name="justify" id="justify">
+          <label for="justify">Justify<br />(toggle)</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Hyphenation</legend>
+
+          <input type="checkbox" name="hyphenate" id="hyphenate">
+          <label for="hyphenate">Hyphenate (toggle)</label>
+        </fieldset>
+      </form>
+    </div>
 
   </div>
 
-  <div id="page-container" class="large recursive-sans-linear-light" data-size="0">
+  <div id="page-container" data-size="0">
 
     <header>
       <h1>Citizenship In The Republic</h1>
