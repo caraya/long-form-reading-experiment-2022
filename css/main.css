@@ -1,14 +1,27 @@
 @import url('./recursive-font.css');
+@import url('./roslindale-font.css');
+@import url('./raleway-font.css');
+@import url('./raleway-italic-font.css');
+@import url('./source-serif-font.css');
+@import url('./source-serif-italic-font.css');
 
 /* BEGIN PAGE-RELATED STYLES */
 
 :root {
+  /*
+    Sets the defaults for the document
+
+    We could use @property to create
+    better custom properties but at this
+    point I don't think it's warranted yet.
+
+    Perhaps when we get to the polishing stage
+    when we trim the font imports we may do so.
+  */
   --font-family: "Recursive", sans-serif;
   --accent-color: #663399;
   --content-width: 75ch;
-  --content-size-small: 12pt;
-  --content-size-normal: 16pt;
-  --content-size-large: 18pt;
+  --content-font-size: 16pt;
   --content-line-height: 1.3;
   --content-hyphenate: none;
   --content-text-align: left;
@@ -22,6 +35,13 @@
   padding: 1rem;
 }
 
+/*
+  Thanks to Una Krvetz for showing me how
+  to do the counter with the width of an
+  element. Using it to measure the changes
+  in width from font to font using the same
+  character width measured in `ch` units
+*/
 #page-container:before {
   content: attr(data-size);
   position: absolute;
@@ -43,22 +63,23 @@ header {
 body {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  gap: 5vw;
 }
 
+/*
+  These are the values we use throughout
+  the long-form text.
+*/
 #page-container {
   margin: 0 auto;
 
   font-family: var(--font-family);
-  font-size: var(--content-size-large);
+  font-size: var(--content-font-size);
   line-height: var(--content-line-height);
   width: var(--content-width);
   line-height: var(--content-line-height);
-  hyphenate: var(--content-hyphenate);
+  hyphens: var(--content-hyphenate);
+  -webkit-hyphens: var(--content-hyphenate);
   text-align: var(--content-text-align);
-  /*   border: 2px solid black;
-padding: 0 2em; */
 }
 
 .centered {
@@ -66,40 +87,46 @@ padding: 0 2em; */
   text-align: center;
 }
 
+/*
+  Container for the menu and the form inside.
+*/
 #menu-wrap {
+  font-family: Helvetica, sans-serif;
   position: fixed;
   top: 40px;
   left: 0px;
   width: 15vw;
   font-size: 1em;
   min-width: 15vw;
-  border-top: none;
   padding: 12px 20px 20px 20px;
   margin-bottom: 20px;
-  font-family: Helvetica; text-transform: uppercase;
   letter-spacing: 1px;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 0px;
-  box-shadow: 0 2px 2px #cfcabf;
+  box-shadow: 2px 2px 2px 2px #cfcabf;
 }
 
-/* Settings related */
+/*
+  Settings related
+*/
+
+/*
+  For the font size we are using points (pt)
+  not pixels or any other web units.
+
+  I'm testing whether points work better for
+  long-form content or not. It's hard to tell
+*/
 body:has(#small:checked) {
-  /*   --primary-color: white;
-  --background-color: navy; */
-  --font-size: 12pt;
+  --content-font-size: 12pt;
 }
 
 body:has(#medium:checked) {
-  /*   --primary-color: white;
-  --background-color: rebeccapurple; */
-  --font-size: 16pt;
+  --content-font-size: 16pt;
+  --content-width: 65ch;
 }
 
 body:has(#large:checked) {
-  /*   --background-color: darkgrey;
-  --primary-color: white; */
-  --font-size: 18pt;
+  --content-font-size: 18pt;
+  --content-width: 55ch;
 }
 
 body:has(#georgia:checked) {
@@ -108,6 +135,7 @@ body:has(#georgia:checked) {
 
 body:has(#roboto:checked) {
   --font-family: Roboto, sans-serif;
+
 }
 
 body:has(#courier:checked) {
@@ -116,6 +144,11 @@ body:has(#courier:checked) {
 
 body:has(#raleway:checked) {
   --font-family: Raleway, sans-serif;
+  font-variation-settings: "wght" 400;
+}
+
+body:has(#source-serif:checked) {
+  --font-family: "Source Serif", serif;
 }
 
 body:has(#lh-tight:checked) {

@@ -27,24 +27,18 @@ window.onresize = setSizes;
 function toggleMenu() {
   // Captures constants for the menu tab title
   // and the menu underneath.
-
-  // const myButton = document.getElementById('hideButton');
-  // const menuTab = document.querySelector('#menu_tab');
-  // const myMenu = document.querySelector('form#menuForm');
-
-  const button = document.querySelector('button');
+  const bttn = document.querySelector('button');
   const form = document.querySelector('#settings-wrap');
 
-  button.addEventListener('click', (event) => {
-    form.classList.toggle('visible');
-  });
-
-  // // We add a pointer down event to toggle
-  // // a visible class that will show / hide
-  // // the menu
-  // menuTab.addEventListener('pointerdown', (event) => {
-  //   myMenu.classList.toggle('visible');
-  // });
+  bttn.onclick = function () {
+    if (form.style.display !== "none") {
+      form.style.display = "none";
+      bttn.textContent = "Show Settings";
+    } else {
+      form.style.display = "block";
+      bttn.textContent = "Hide Settings";
+    }
+  };
 }
 
 toggleMenu();
