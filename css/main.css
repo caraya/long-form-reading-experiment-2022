@@ -1,7 +1,6 @@
 @import url('./recursive-font.css');
-@import url('./roslindale-font.css');
 @import url('./raleway-font.css');
-@import url('./raleway-italic-font.css');
+/* @import url('./raleway-italic-font.css'); */
 @import url('./source-serif-font.css');
 @import url('./source-serif-italic-font.css');
 
@@ -20,11 +19,12 @@
   */
   --font-family: "Recursive", sans-serif;
   --accent-color: #663399;
-  --content-width: 75ch;
+  --content-width: 75;
   --content-font-size: 16pt;
   --content-line-height: 1.3;
   --content-hyphenate: none;
   --content-text-align: left;
+  --content-text-indent: 1;
 }
 
 .notice {
@@ -75,11 +75,15 @@ body {
   font-family: var(--font-family);
   font-size: var(--content-font-size);
   line-height: var(--content-line-height);
-  width: var(--content-width);
+  width: calc(var(--content-width) * 1ch);
   line-height: var(--content-line-height);
   hyphens: var(--content-hyphenate);
   -webkit-hyphens: var(--content-hyphenate);
   text-align: var(--content-text-align);
+}
+
+page-container > p {
+  text-indent: calc(var(content-text-indent) * 1em;);
 }
 
 .centered {
@@ -105,6 +109,43 @@ body {
 }
 
 /*
+  Styles specific to curtis.html
+*/
+
+#page-container {
+  counter-reset: figure-counter;
+}
+
+.footnotes {
+  list-style-type: none;
+}
+
+pre, code {
+  font-family: monospace;
+  word-break: break-all;
+  background-color: rgba(220,220,220,.25)
+}
+
+pre {
+  margin-left: 0;
+  padding: 2em;
+  width: calc(var(--content-width) * 1ch)
+}
+
+code {
+  display: inline-block;
+  padding: .25em;
+}
+
+figure {
+  margin-left: 0;
+  counter-increment: figure-counter;
+}
+
+figure > figcaption:before {
+  content: "Figure " counter(figure-counter) ": ";
+}
+/*
   Settings related
 */
 
@@ -121,12 +162,12 @@ body:has(#small:checked) {
 
 body:has(#medium:checked) {
   --content-font-size: 16pt;
-  --content-width: 65ch;
+  --content-width: 65;
 }
 
 body:has(#large:checked) {
   --content-font-size: 18pt;
-  --content-width: 55ch;
+  --content-width: 55;
 }
 
 body:has(#georgia:checked) {
@@ -144,7 +185,9 @@ body:has(#courier:checked) {
 
 body:has(#raleway:checked) {
   --font-family: Raleway, sans-serif;
-  font-variation-settings: "wght" 400;
+  font-style: normal;
+  font-weight: 400;
+  font-variation-settings: "wght" 400 "ital" 0;
 }
 
 body:has(#source-serif:checked) {
