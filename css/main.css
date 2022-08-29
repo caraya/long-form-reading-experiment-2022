@@ -1,8 +1,9 @@
+@import url('./roboto-font.css');
 @import url('./recursive-font.css');
 @import url('./raleway-font.css');
 /* @import url('./raleway-italic-font.css'); */
 @import url('./source-serif-font.css');
-@import url('./source-serif-italic-font.css');
+/* @import url('./source-serif-italic-font.css'); */
 
 /* BEGIN PAGE-RELATED STYLES */
 
@@ -25,6 +26,20 @@
   --content-hyphenate: none;
   --content-text-align: left;
   --content-text-indent: 1;
+
+  --font-system-ui:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Ubuntu,
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol";
 }
 
 .notice {
@@ -56,6 +71,10 @@
   color: white;
 }
 
+* {
+  font-family: var(--font-system-ui);
+}
+
 header {
   text-align: center;
 }
@@ -63,6 +82,10 @@ header {
 body {
   display: flex;
   flex-flow: row nowrap;
+}
+
+div p:not:first-child {
+  text-indent: 2.5em;
 }
 
 /*
@@ -193,6 +216,12 @@ body:has(#raleway:checked) {
 body:has(#source-serif:checked) {
   --font-family: "Source Serif", serif;
 }
+
+body:has(#system:checked) {
+  --font-family: --var(--font-system-ui);
+}
+-apple-system,
+BlinkMacSystemFont,
 
 body:has(#lh-tight:checked) {
   --content-line-height: 1.1;
